@@ -124,6 +124,7 @@ Closes the program and saves all tasks to `todo_list.txt`.
 ---
 
 📌 File Storage System
+
 `filename = "todo_list.txt"`
 
 This variable stores the location of the text file used to save tasks permanently.
@@ -135,7 +136,9 @@ Tasks are stored line-by-line inside:
 Example:
 
 Buy groceries
+
 Finish Python assignment
+
 Read 10 pages
 
 ---
@@ -147,6 +150,7 @@ Unlike the earlier version, tasks are now permanently stored using a text file.
 This means:
 
 ✅ Tasks remain saved after closing the app
+
 ✅ Tasks reload automatically when reopening the program
 
 ---
