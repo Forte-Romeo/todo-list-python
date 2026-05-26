@@ -3,9 +3,12 @@ import sys
 from questionary import prompt, select
 from termcolor import colored
 
+filename = "/home/forteromeo/dev/Forte-Romeo/foundation/foundation-python/mini-projects/todo-list-python/todo_list.txt"
+
 def add_task(tasks):
     task = input("Enter a new task: ")
     tasks.append(task)
+    save_tasks_to_file(filename, tasks)
     print(colored(f"Task '{task}' added!", 'green'))
 
 def view_tasks(tasks):
@@ -15,6 +18,7 @@ def view_tasks(tasks):
 def mark_task_complete(tasks, index):
     if 0 <= int(index) < len(tasks):  # Convert index to integer
         tasks[int(index)] += " (Completed)"
+        save_tasks_to_file(filename, tasks)
         print(colored(f"Task '{tasks[int(index)]}' marked as complete!", 'green'))
     else:
         print(colored("Invalid task number.", 'red'))
@@ -23,13 +27,29 @@ def remove_task(tasks, index):
     if 0 <= index < len(tasks):
         removed_task = tasks[index]   # store first
         del tasks[index]              # then delete
+        save_tasks_to_file(filename, tasks)
         print(colored(f"Task '{removed_task}' removed!", 'green'))
     else:
         print(colored("Invalid task number.", 'red'))
 
+# Function to write/save tasks to a file
+def save_tasks_to_file(filename, tasks):
+    with open(filename, 'w') as file:
+        file.writelines([f"{task}\n" for task in tasks])
+
+# Function to read/load tasks from a file
+def load_tasks_from_file(filename):
+    try:
+        with open(filename, 'r') as file:
+            lines = file.readlines()
+            return [line.strip() for line in lines]
+    except FileNotFoundError:
+        print(colored("File not found. Starting with an empty task list.", 'yellow'))
+        return[]
+
 # Define Main Dashboard function for the todo list application.
 def main():
-    tasks = []
+    tasks = load_tasks_from_file(filename)
 
     while True:
         print("\nTodo List Menu:")
