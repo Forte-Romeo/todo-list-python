@@ -3,7 +3,7 @@ import sys
 from questionary import prompt, select
 from termcolor import colored
 
-filename = "/home/forteromeo/dev/Forte-Romeo/foundation/foundation-python/mini-projects/todo-list-python/todo_list.txt"
+filename = "todo_list.txt"
 
 def add_task(tasks):
     task = input("Enter a new task: ")
