@@ -2,6 +2,8 @@
 
 A simple command-line Todo List application built with Python. This project helps users manage daily tasks by adding, viewing, completing, and removing tasks directly from the terminal.
 
+The application stores tasks in a .txt file, meaning tasks remain saved even after closing the program.
+
 ---
 
 ## 🚀 Features
@@ -10,6 +12,7 @@ A simple command-line Todo List application built with Python. This project help
 - View all tasks in a numbered list
 - Mark tasks as completed
 - Remove tasks from the list
+- Automatic file storage (persistent data)
 - Color-coded terminal output for better user experience
 
 ---
@@ -25,11 +28,13 @@ A simple command-line Todo List application built with Python. This project help
 
 ## 📁 Project Structure
 
+```
 todo-list-python/
-
+│
 ├── todo-list.py
-
+├── todo_list.txt
 ├── README.md
+```
 
 ---
 
@@ -95,7 +100,7 @@ Deletes selected task.
 <img width="273" height="162" alt="Screenshot 2026-05-25 142907" src="https://github.com/user-attachments/assets/061c15af-1d61-4b8d-b0b1-4318845f5e6e" />
 
 - Exit:
-Closes the program.
+Closes the program and saves all tasks to `todo_list.txt`.
 
 ---
 
@@ -107,21 +112,53 @@ Closes the program.
 
 ## 💡 Code Overview
 
-- tasks = [ ] : stores tasks
+- tasks = [ ] : stores tasks in the text file
 - add_task( ) : adds task
 - view_tasks( ) : shows tasks
 - mark_task_complete( ) : completes task
 - remove_task( ) : deletes task
+- save_tasks_to_file( ): writes all tasks into the text file
+- load_tasks_from_file( ): loads saved tasks when the app starts
 - main( ) : program loop
+
+---
+
+📌 File Storage System
+`filename = "todo_list.txt"`
+
+This variable stores the location of the text file used to save tasks permanently.
+
+Tasks are stored line-by-line inside:
+
+`todo_list.txt`
+
+Example:
+
+Buy groceries
+Finish Python assignment
+Read 10 pages
+
+---
+
+## 💾 Data Persistence
+
+Unlike the earlier version, tasks are now permanently stored using a text file.
+
+This means:
+
+✅ Tasks remain saved after closing the app
+✅ Tasks reload automatically when reopening the program
 
 ---
 
 ## 🧠 What I Learned
 
-- Python lists and manipulation
+- Python functions, lists, and manipulation
 - CLI menu systems
-- Input handling
+- File handling
+- Input/ output
 - Basic validation
+- Data persistence
 - External libraries (termcolor, questionary)
 - Structuring small Python projects
 
@@ -129,19 +166,24 @@ Closes the program.
 
 ## ⚠️ Known Issues
 
-- No data persistence (tasks reset after exit)
-- No advanced input validation
 - No edit task feature
+- No task priorities
+- No due dates
+- Minimal input validation
 
 ---
 
 ## 🔮 Future Improvements
 
-- Add JSON/file storage
-- Add edit task feature
-- Add priority system
-- Add due dates
-- Build GUI or web version
+- ✏️ Edit existing tasks
+- ⭐ Priority levels
+- 📅 Due dates
+- 🔍 Search tasks
+- 📂 JSON or SQLite database storage
+- 🖥️ GUI version with Tkinter or PyQt
+- 🌐 Web app version using Flask or Django
+- 🎯 Task categories
+- 📊 Productivity statistics
 
 ---
 
@@ -154,4 +196,10 @@ Software + AI Engineer | IT Student | Builder in Progress 🚀
 
 ## ⭐ Support
 
-If you like this project, star the repository and feel free to improve it.
+If you like this project:
+- Star the repository
+- Fork the project
+- Feel free to improve it
+- Build your own version
+
+Happy Coding 🚀
