@@ -1,17 +1,19 @@
 # 📝 Python CLI Todo List App
 
-A simple command-line Todo List application built with Python. This project helps users manage daily tasks by adding, viewing, completing, and removing tasks directly from the terminal.
+A simple command-line Todo List application built with Python. This project helps users manage daily tasks by adding, viewing, editing, completing, searching, and removing tasks directly from the terminal.
 
-The application stores tasks in a .txt file, meaning tasks remain saved even after closing the program.
+The application stores tasks in a `.json` file, meaning tasks remain saved even after closing the program.
 
 ---
 
 ## 🚀 Features
 
-- Add new tasks
+- Add new tasks with due dates
 - View all tasks in a numbered list
+- Edit existing tasks
 - Mark tasks as completed
 - Remove tasks from the list
+- Search tasks in the list
 - Automatic file storage (persistent data)
 - Color-coded terminal output for better user experience
 
@@ -23,6 +25,7 @@ The application stores tasks in a .txt file, meaning tasks remain saved even aft
 - termcolor
 - questionary
 - sys (built-in module)
+- json (built-in module)
 
 ---
 
@@ -32,7 +35,7 @@ The application stores tasks in a .txt file, meaning tasks remain saved even aft
 todo-list-python/
 │
 ├── todo-list.py
-├── todo_list.txt
+├── todo_list.json
 ├── README.md
 ```
 
@@ -74,39 +77,61 @@ Activate it:
 Todo List Menu:
 1. Add Task
 2. View Tasks
-3. Mark Task as Complete
-4. Remove Task
-5. Exit
+3. Edit Task
+4. Mark Task as Complete
+5. Remove Task
+6. Search Tasks
+7. Exit
 
 ---
 
 ## 🔹 Features Breakdown
 
 - Add Task:
-Enter a task and it will be added.
-<img width="221" height="164" alt="Screenshot 2026-05-25 142728" src="https://github.com/user-attachments/assets/974ad3ad-7938-4af2-a76e-789f2fdc4dbc" />
+Enter a task and add its due date.
+<img width="305" height="237" alt="Screenshot 2026-05-27 150343" src="https://github.com/user-attachments/assets/33208e73-b5ed-42bf-b16c-d0187a988dfe" />
+
 
 - View Tasks:
 Shows all tasks with numbering.
-<img width="224" height="193" alt="Screenshot 2026-05-25 142806" src="https://github.com/user-attachments/assets/da035be5-7bf1-451e-bc07-cc464b52595b" />
+<img width="320" height="287" alt="Screenshot 2026-05-27 150401" src="https://github.com/user-attachments/assets/cb4f904e-a7c2-47e7-a2b2-d7a780212e8f" />
+
+
+- Edit Task:
+Edits a task and updates the list.
+<img width="307" height="299" alt="Screenshot 2026-05-27 150435" src="https://github.com/user-attachments/assets/9517ce33-2e5f-4f41-a20d-dd9b3315cf2e" />
+<img width="354" height="100" alt="Screenshot 2026-05-27 150446" src="https://github.com/user-attachments/assets/d48dce33-105f-43b5-89b1-ce2b431ee998" />
+<img width="310" height="281" alt="Screenshot 2026-05-27 150516" src="https://github.com/user-attachments/assets/b48af2a5-ea72-4f88-90d5-13f19932c053" />
+
 
 - Mark Task as Complete:
 Marks selected task as completed.
-<img width="366" height="166" alt="Screenshot 2026-05-25 142826" src="https://github.com/user-attachments/assets/5d55f040-25af-4a09-a7ed-ba78e057e70b" />
+<img width="667" height="316" alt="Screenshot 2026-05-27 150541" src="https://github.com/user-attachments/assets/e33b31d8-fedc-41a3-a62d-48816d9f5c45" />
+<img width="322" height="284" alt="Screenshot 2026-05-27 150553" src="https://github.com/user-attachments/assets/5d64655a-bc82-41f6-8e54-1047ee96da81" />
+
 
 - Remove Task:
 Deletes selected task.
-<img width="204" height="212" alt="Screenshot 2026-05-25 142857" src="https://github.com/user-attachments/assets/6d789310-a7f0-4165-9b4a-0bd419e92a4d" />
-<img width="273" height="162" alt="Screenshot 2026-05-25 142907" src="https://github.com/user-attachments/assets/061c15af-1d61-4b8d-b0b1-4318845f5e6e" />
+<img width="305" height="316" alt="Screenshot 2026-05-27 150623" src="https://github.com/user-attachments/assets/844dab01-4cf4-46bc-a6a9-80d5f0e95563" />
+<img width="318" height="272" alt="Screenshot 2026-05-27 150647" src="https://github.com/user-attachments/assets/89b2a143-b2d1-44b0-8f07-d8202fc61fe4" />
+
+
+- Search Tasks:
+Uses a keyword to search for tasks in the list.
+<img width="320" height="270" alt="Screenshot 2026-05-27 150701" src="https://github.com/user-attachments/assets/98329fec-9454-4087-a3aa-030b38bf98b0" />
 
 - Exit:
-Closes the program and saves all tasks to `todo_list.txt`.
+Closes the program and saves all tasks to `todo_list.json`.
+<img width="220" height="198" alt="Screenshot 2026-05-27 150710" src="https://github.com/user-attachments/assets/05b315e3-63f2-48f3-9ca2-be2489cb07cf" />
 
 ---
 
 ## 📌 Output
 
-<img width="217" height="191" alt="Screenshot 2026-05-25 142915" src="https://github.com/user-attachments/assets/fc359daf-e43f-42bd-af51-740711d855df" />
+```
+1. Document code | Due: 2026-05-27 | ❌
+2. Push code to git | Due: 2026-05-27 | ❌
+```
 
 ---
 
@@ -115,37 +140,43 @@ Closes the program and saves all tasks to `todo_list.txt`.
 - tasks = [ ] : stores tasks in the text file
 - add_task( ) : adds task
 - view_tasks( ) : shows tasks
+- edit_task( ) : edits an existing task
 - mark_task_complete( ) : completes task
 - remove_task( ) : deletes task
+- search_task( ) : searches a task in the JSON file
 - save_tasks_to_file( ): writes all tasks into the text file
 - load_tasks_from_file( ): loads saved tasks when the app starts
 - main( ) : program loop
 
 ---
 
-📌 File Storage System
+## 📌 File Storage System
 
-`filename = "todo_list.txt"`
+`filename = "todo_list.json"`
 
-This variable stores the location of the text file used to save tasks permanently.
+This variable stores the location of the JSON file used to save tasks permanently.
 
-Tasks are stored line-by-line inside:
+Tasks are stored as dictionaries inside:
 
-`todo_list.txt`
+`todo_list.json`
 
 Example:
 
-Buy groceries
-
-Finish Python assignment
-
-Read 10 pages
+```
+[
+  {
+      "task": "Buy groceries",
+      "due_date": "2026-05-27",
+      "completed": True
+  }
+]
+```
 
 ---
 
 ## 💾 Data Persistence
 
-Unlike the earlier version, tasks are now permanently stored using a text file.
+Unlike the earlier version, tasks are now permanently stored using a JSON file.
 
 This means:
 
@@ -155,37 +186,41 @@ This means:
 
 ---
 
-## 🧠 What I Learned
+## 🧠 Python Concepts Practiced
 
-- Python functions, lists, and manipulation
-- CLI menu systems
-- File handling
-- Input/ output
-- Basic validation
-- Data persistence
-- External libraries (termcolor, questionary)
-- Structuring small Python projects
+
+This project teaches:
+
+- Functions
+- Lists & dictionaries
+- JSON handling
+- File persistence
+- CRUD operations
+- Loops
+- Conditional logic
+- Error handling
+- CLI architecture
+- Search functionality
 
 ---
 
 ## ⚠️ Known Issues
 
-- No edit task feature
-- No task priorities
-- No due dates
-- Minimal input validation
+- No task priority system
+- No overdue task detection
+- No task categories/tags
+- No authentication system
+- Due date validation is minimal
 
 ---
 
 ## 🔮 Future Improvements
 
-- ✏️ Edit existing tasks
 - ⭐ Priority levels
-- 📅 Due dates
-- 🔍 Search tasks
-- 📂 JSON or SQLite database storage
+- 📂 SQLite database storage
 - 🖥️ GUI version with Tkinter or PyQt
 - 🌐 Web app version using Flask or Django
+- 📱 Mobile version
 - 🎯 Task categories
 - 📊 Productivity statistics
 
